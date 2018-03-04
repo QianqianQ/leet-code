@@ -13,6 +13,16 @@ class Solution:
             temp.append(i)
         return []
 
+
+# Time complexity: O(n), Space complexity: O(n)
+    def twoSum2(self, nums, target):
+        lookup = {}
+        for index, value in enumerate(nums):
+            if (target - value) in lookup:
+                return [lookup[target-value],index]
+            lookup[value] = index
+        return []
+
 if __name__=="__main__":
     nums1 = [2,7,11,15]
     target1 = 9
