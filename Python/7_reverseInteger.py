@@ -1,7 +1,7 @@
 class Solution:
     def reverse(self,x):
         if x<0:
-            return -self.reverse2(-x)
+            return -self.reverse(-x)
         else:
             reversed = int(str(x)[::-1])
 
