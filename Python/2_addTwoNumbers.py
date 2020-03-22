@@ -28,6 +28,34 @@ class Solution:
         
         return dummy.next
 
+class Solution2:
+    
+    def getNum(self,l: ListNode) -> int:
+        ele = 0
+        value = 0
+        while l is not None:
+            value += l.val*(10**ele)
+            ele += 1
+            l = l.next
+        return value
+    
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        value1 = self.getNum(l1)
+        print(value1)
+        value2 = self.getNum(l2)
+        print(value2)
+        total = value1 + value2
+        digits = [int(i) for i in str(total)][::-1]
+        print(digits)
+        res = list()
+        res.append(ListNode(digits[0]))
+        for i in digits[1:]:
+            new_node = ListNode(i)
+            res[-1].next = new_node
+            res.append(new_node)
+        
+        return res[0]
+
 if __name__=="__main__":
     l1, l1.next, l1.next.next = ListNode(2), ListNode(4), ListNode(3)
     l2, l2.next, l2.next.next = ListNode(5), ListNode(6), ListNode(4)
