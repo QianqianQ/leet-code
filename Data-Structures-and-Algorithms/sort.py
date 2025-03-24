@@ -1,8 +1,8 @@
 #! /usr/bin/env python3
 
-from calendar import c
 import timeit
 import functools
+
 
 # bubble sort
 # O(N^2)
@@ -14,7 +14,6 @@ def bubble_sort(l: list) -> list:
     print(l)
     return l
 
-l = [10, 9 ,8, 3, 4, 5]
 
 # selection sort
 #  O(n/2 * n) = O(n^2)
@@ -29,9 +28,9 @@ def selection_sort(l: list) -> list:
         l[i], l[min_index] = l[min_index], l[i]
     print(l)
 
+
 # Insertion sort
 #  O(n/2 * n) = O(n^2)
-
 def insertion_sort(l: list) -> list:
     for i in range(1, len(l)):
         insert_index = i
@@ -46,9 +45,9 @@ def insertion_sort(l: list) -> list:
     print(l)
 
 
-
 # execution_time = timeit.timeit(lambda: bubble_sort(l), number=1)
 # Create a partial function with arguments
+l = [10, 9, 8, 3, 4, 5]
 partial_func = functools.partial(insertion_sort, l)
 execution_time = timeit.timeit(partial_func, number=1)
 print(f"Execution time: {execution_time:.6f} seconds")

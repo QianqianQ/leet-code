@@ -1,5 +1,3 @@
-
-
 from typing import Iterator
 
 
@@ -23,6 +21,7 @@ def fibonacchi_loop(n: int) -> list[int]:
 
 # print(fibonacchi_loop(10))  # Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 
+
 def fibonacchi_recursive(n: int) -> list[int]:
     '''
     This function returns the first n fibonacci numbers using recursion.
@@ -36,6 +35,7 @@ def fibonacchi_recursive(n: int) -> list[int]:
     fibo = fibonacchi_recursive(n-1)
     fibo.append(fibo[-1] + fibo[-2])
     return fibo
+
 
 def fibonacchi_recursive_memo(n: int, memo: dict[int, int] = {}) -> list[int]:
     '''
@@ -53,6 +53,7 @@ def fibonacchi_recursive_memo(n: int, memo: dict[int, int] = {}) -> list[int]:
     fibo.append(fibo[-1] + fibo[-2])
     memo[n] = fibo
     return fibo
+
 
 def fib(n: int) -> Iterator[int]:
     '''
