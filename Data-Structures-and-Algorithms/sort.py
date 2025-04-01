@@ -6,43 +6,46 @@ import functools
 
 # bubble sort
 # O(N^2)
-def bubble_sort(l: list) -> list:
-    for i in range(len(l) - 1):
-        for j in range(len(l) - 1 - i):
-            if l[j] > l[j + 1]:
-                l[j], l[j + 1] = l[j + 1], l[j]
-    print(l)
-    return l
+def bubble_sort(lst: list[float | int]) -> list[float | int]:
+    for i in range(len(lst) - 1):
+        for j in range(len(lst) - 1 - i):
+            if lst[j] > lst[j + 1]:
+                lst[j], lst[j + 1] = lst[j + 1], lst[j]
+    return lst
 
 
 # selection sort
 #  O(n/2 * n) = O(n^2)
 # select min value in each iteration, and put in the front
 # of the unsorted array
-def selection_sort(l: list) -> list:
-    for i in range(len(l) - 1):
+def selection_sort(lst: list[float | int]) -> list[float | int]:
+    for i in range(len(lst) - 1):
         min_index = i
-        for j in range(i + 1, len(l)):
-            if l[j] < l[min_index]:
+        for j in range(i + 1, len(lst)):
+            if lst[j] < lst[min_index]:
                 min_index = j
-        l[i], l[min_index] = l[min_index], l[i]
-    print(l)
+        lst[i], lst[min_index] = lst[min_index], lst[i]
+    return lst
 
 
 # Insertion sort
 #  O(n/2 * n) = O(n^2)
-def insertion_sort(l: list) -> list:
-    for i in range(1, len(l)):
-        insert_index = i
-        current_value = l[i]
-        for j in range(i - 1, -1, -1):
-            if l[j] > current_value:
-                insert_index = j
-                l[j + 1] = l[j] 
-            else:
-                break
-        l[insert_index] = current_value
-    print(l)
+def insertion_sort(lst: list[float | int]) -> list[float | int]:
+    # Start from the second element (index 1) and treat the first element as sorted
+    for i in range(1, len(lst)):
+        j = i - 1
+        value = lst[i]
+
+        # Compare the selected element with the previous elements in the sorted portion
+        # until an element smaller than it is found
+        # For descending order, change value < lst[j] to value > lst[j]
+        while j >= 0 and value < lst[j]:
+            lst[j + 1] = lst[j]
+            j -= 1
+
+        # Place key at after the element just smaller than it.
+        lst[j + 1] = value
+    return lst
 
 
 # execution_time = timeit.timeit(lambda: bubble_sort(l), number=1)
